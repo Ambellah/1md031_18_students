@@ -14,7 +14,7 @@ Before you submit the final version of your labs, make sure that your project fu
 ## 02 HTML
 
 Create an index.html file which contains:
-- [X] A headline
+- [ ] A headline
 - [ ] A section to select burgers that contains at least three items. Each item has:
 	- [ ] A name
 	- [ ] An image
@@ -52,6 +52,9 @@ Create a js_script.js file which contains:
 - [ ] A function that loads the information from the menu.js json object and inserts the information to the burger selection section of the index.html file
 - [ ] Only displays allergy information if relevant (either only if it contains gluten or lactose, or only if it's gluten or lactose free)
 - [ ] Add a checkbox to each menu item
+
+
+
 - [ ] A functionality for the order button that writes the information from the text boxes, the gender and all items on the order (that have the checkbox checked) to the bottom of the html file when the button is clicked
 
 Create a vue_script.js file which contains:
@@ -69,6 +72,10 @@ Create a vue_script.js file which contains:
     - [ ] A location on the map
     - [ ] The order information
     - [ ] The customer information
+
+
+
+
 
 ## Optional
 - [ ] Set the orderID on client side so one customer can make multiple orders

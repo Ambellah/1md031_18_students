@@ -1,0 +1,147 @@
+/* Comments */
+
+body {
+  font-family: arial;
+  font-size: 20pt;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1526635229611-9a2482c8427b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d65e05ee1dd24785f5de87ae45e506fe&auto=format&fit=crop&w=750&q=80");
+  background-size: cover;
+  background-attachment:fixed;
+  z-index: -1;
+}
+
+#header {
+  margin-top: 30px;
+}
+
+#headerImage {
+  opacity: 0.5;
+  width: 100%;
+  height: 550px;
+}
+
+#headerTitle {
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  margin-top: 120px;
+}
+
+.Burger_section {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  font-family: "Times New Roman", Times, serif;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 33% 33% 33%;
+  background-color: #444;
+  color: #ffffff;
+}
+
+.the_burgers {
+  background-color: #444;
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 100%;
+}
+
+#burger_name {
+  align-items: center;
+  font-weight: bold;
+}
+
+
+#allergies {
+  color: #FF0000;
+  font-style: italic;
+}
+
+#CustomerInfo {
+  border: 15px double #000000;
+  font-size: 100%;
+}
+
+#CI_text{
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
+
+#CI_input {
+  font-size: 100%;
+}
+
+#GenderSurvey {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-top: 5px dotted #FF69B4;
+  border-bottom: 5px dotted #FF69B4;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #F8B008;
+}
+
+#orders {
+  margin: 20px;
+  border-bottom: 5px dotted #FF69B4;
+  padding-bottom: 20px;
+}
+
+#myButtonID{
+  font-size: 100%;
+}
+
+#footImage {
+  width: 100%;
+  height: 20px;
+}
+
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.view-box {
+	width: 90%;
+	height: 50vh;
+	margin: 1em auto;
+	overflow: scroll;
+	border: 1px solid rgba(0,0,0,0.4);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#dots {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	background: url(/img/polacks.jpg);
+	background-repeat: no-repeat;
+	width:1920px;
+	height: 1078px;
+	cursor: crosshair;
+}
+
+#dots div {
+	position: absolute;
+	background: black;
+	color: white;
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	text-align: center;
+}
+
+#orderList {
+	top:1em;
+	left:1em;
+	position: absolute;
+	z-index: 2;
+	color:black;
+	background: rgba(255,255,255, 0.5);
+	padding: 1em;
+}
