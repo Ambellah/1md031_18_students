@@ -43,8 +43,16 @@ var food_menu = [
 "gluten": false,
 "allergy_free": true,
 "img": "https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80"
-}
+},
 
-];
+{
+  "name": "The Beef Burger",
+  "price": "125:-",
+  "lactose": false,
+  "gluten": true,
+  "allergy_free": false,
+  "img": "https://images.unsplash.com/photo-1520072959219-c595dc870360?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=80a0e355a5f83d806f9b72782c7fa19b&auto=format&fit=crop&w=853&q=80"
+
+}];
 
 //console.log(food_menu);

@@ -4,7 +4,6 @@
 
 <head id="header">
   <script src="/socket.io/socket.io.js" defer></script>
-  <script src="js/deli-very.js" defer></script>
   <link rel="stylesheet" href="css/deli-very.css">
 
   <script type="text/javascript" src="js/menu.js" defer></script>
@@ -22,132 +21,122 @@
 <body>
   <main>
     <div id="vueContent">
-        <!-- Burger loop för den nya menyn!-->
-        <ul class="Burger_section">
-          <li v-for="Burger in burgerList">
-            <p id="burger_name">{{Burger.name}}</p>
-            <img :src ="Burger.img" width="300px" height="450px">
-            <p> Burger Price: {{Burger.price}} </p>
-            <p id="allergies" v-if="Burger.lactose"> Contains: Lactose </p>
-            <p id="allergies" v-if="Burger.gluten"> Contains: Gluten </p>
-            <p v-if="Burger.allergy_free"> Allergy friendly! </p>
+      <!-- Burger loop för den nya menyn!-->
+      <ul class="Burger_section">
+        <li v-for="Burger in burgerList">
+          <p id="burger_name">{{Burger.name}}</p>
+          <img :src ="Burger.img" width="300px" height="450px">
+          <p> Burger Price: {{Burger.price}} </p>
+          <p id="allergies" v-if="Burger.lactose"> Contains: Lactose </p>
+          <p id="allergies" v-if="Burger.gluten"> Contains: Gluten </p>
+          <p v-if="Burger.allergy_free"> Allergy friendly! </p>
 
-            <label class="container"> Add to order <input v-model="burgerdetails.chosen_burger" :id="Burger.name" nane="chosen_burger" type="checkbox" :value="Burger.name" >
-              <span class="checkmark"></span>
-            </label>
+          <label class="container"> Add to order <input v-model="burgerdetails.chosen_burger" :id="Burger.name" name="chosen_burger" type="checkbox" :value="Burger.name" >
+            <span class="checkmark"></span>
+          </label>
 
-            <!-- Iterate over all checkboxes, check if they are checked. Get getElementbyId.-->
-          </li>
-        </ul>
+          <!-- Iterate over all checkboxes, check if they are checked. Get getElementbyId.-->
+        </li>
+      </ul>
 
-        <p>{{chosen_burger}}</p>
+      <p>{{burgerdetails.chosen_burger}}</p>
 
 
-        <section id="CustomerInfo">
-          <h2 id=CI_text>Customer Information</h2>
-          <p id=CI_text>Please, fill in information for delivery & receipt in the fields below</p>
+      <section id="CustomerInfo">
+        <h2 id=CI_text>Customer Information</h2>
+        <p id=CI_text>Please, fill in information for delivery & receipt in the fields below</p>
 
-          <form id=CI_text>
-            <h4> Delivery and Customer Information </h4>
-            <p>
-              <label for="Name">Name</label><br>
-              <input id="CI_input" v-model=burgerdetails.fullname type="text" id="Name" name="name" required="required" placeholder="Type your full name here...">
-            </p>
-            <p>
-              <label for="Email">E-mail</label><br>
-              <input id="CI_input" v-model="burgerdetails.email" type="text" id="Email" name="email" placeholder="Type your email for receipt...">
-            </p>
-            <!--  <p>
-            <label for="Street">Street</label><br>
-            <input id="CI_input" type="text" id="Street" name="street" required="required" placeholder="Type the delivery street...">
+        <form id=CI_text>
+          <h4>Customer Information: </h4>
+          <p>
+            <label for="Name">Name</label><br>
+            <input id="CI_input" v-model="burgerdetails.fullname" type="text" id="Name" name="name" required="required" placeholder="Type your full name here...">
           </p>
           <p>
-          <label for="HouseNumber">House Number</label><br>
-          <input id="CI_input" type="numbers" id="HouseNumber" name="housenumber" required="required" placeholder="Type the house number...">
-          <p/>
-        -->
-      </form>
+            <label for="Email">E-mail</label><br>
+            <input id="CI_input" v-model="burgerdetails.email" type="text" id="Email" name="email" placeholder="Type your email for receipt...">
+          </p>
+        </form>
 
-      <!--KARTAN ????
-
-      <div class="view-box">
-        <div id="dots" v-on:click="addOrder">
-          <div id="orders">
-            <div id="orderList">
-
-              <div
-              v-for="(order, key) in orders"
-              v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-              #{{ key }}: {{ order.orderItems.join(", ") }}
-
-              {{key}}
-
-            </div>
-          </div>
+        <div id=CI_text>
+          <label for="payment">Payment Options</label><br>
+          <select v-model="burgerdetails.payment" id="CI_input" id="payment" name="Paymemt">
+            <option selected="selected">MasterCard</option>
+            <option>VISA</option>
+            <option>American Express</option>
+            <option>Cash </option>
+          </select>
         </div>
-      </div>
-    </div>
--->
 
+        <h4 id=CI_text> Delivery Information: </h4>
+        <h6 id=CI_text> Please, indicate point of delivery </h6>
 
-      <div id=CI_text>
-        <label for="payment">Payment Options</label><br>
-        <select v-model="burgerdetails.payment" id="CI_input" id="payment" name="Paymemt">
-          <option selected="selected">MasterCard</option>
-          <option>VISA</option>
-          <option>American Express</option>
-          <option>Other... </option>
-        </select>
-      </div>
-    </section>
-
-
-    <div id="orders">
-    <div id="orderList">
-      <div v-for="(order, key) in orders">
+        <!-- KARTAN dispatcher!!
+        <div id="orders">
+        <div id="orderList">
+        <div v-for="(order, key) in orders">
         #{{ key }}: {{ order.orderItems.join(", ") }}
       </div>
     </div>
     <div id="dots">
-        <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-          {{ key }}
-        </div>
-    </div>
+    <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+    {{ key }}
+  </div>
+</div>
+-->
+
+<!-- KARTAN-->
+
+<div class="view-box">
+  <div id="dots" v-on:click="displayOrder">
+    <div
+    v-bind:style="{ left: x + 'px', top: y + 'px'}">
+    T
   </div>
 
-
-  <section id="GenderSurvey">
-    <h3>Gender Statistics Study</h3><p> Please select your gender by choosing one of the options listed below</p>
-    <p>
-      <input v-model="burgerdetails.gender" type="radio" id="Female" name="gender" checked="checked" value="1">
-      <label for="Female">Female</label><br>
-    </p>
-    <p>
-      <input v-model="burgerdetails.gender" type="radio" id="Male" name="gender" value="2">
-      <label for="Male">Male</label><br>
-    </p>
-    <p>
-      <input v-model="burgerdetails.gender" type="radio" id="Other" name="gender" value="3">
-      <label for="Other">Do not wish to participate</label><br>
-    </p>
-  </section>
+</div>
+</div>
 
 
-  <div id="orders">
-    <button id="myButtonID" v-on:click="addOrder" type="submit"><img src="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2539c60108dc7a87abf4eba1bcd021be&auto=format&fit=crop&w=750&q=80" width="300px"> <br /> Click here to place order!</button>
-  </div>
+</section>
 
-<p class="conf" v-if="show"><p id="orderconf"> Order Confirmation</p>
-  <p id="CustomerInformation"> Customer Information</p>
-  <p> Name: {{burgerdetails.fullname}}</p>
-  <p> Email: {{burgerdetails.email}} </p>
-  <p> Deliver to: {{x}} x / {{y}} y </p>
-  <p> Payment method: {{burgerdetails.payment}} </p>
-  <p> Gender: {{burgerdetails.gender}} </p>
-  <p id="CustomerInformation"> Order Summary</p>
-  <div v-for="b in burgerdetails.chosen_burger"><li>{{b}}</li></div>
+
+<section id="GenderSurvey">
+  <h3>Gender Statistics Study</h3><p> Please select your gender by choosing one of the options listed below</p>
+  <p>
+    <input v-model="burgerdetails.gender" type="radio" id="Female" name="gender" checked="checked" value="Female">
+    <label for="Female">Female</label><br>
+  </p>
+  <p>
+    <input v-model="burgerdetails.gender" type="radio" id="Male" name="gender" value="Male">
+    <label for="Male">Male</label><br>
+  </p>
+  <p>
+    <input v-model="burgerdetails.gender" type="radio" id="Other" name="gender" value="Do not wish to participate">
+    <label for="Other">Do not wish to participate</label><br>
+  </p>
+</section>
+
+
+<div id="orders">
+  <button id="myButtonID" v-on:click="addOrder"  type="submit"><img src="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2539c60108dc7a87abf4eba1bcd021be&auto=format&fit=crop&w=750&q=80" width="300px"> <br /> Click here to place order!</button>
+</div>
 
 <hr> <!-- Detta är en linje -->
+
+<div class="confirmation" v-if="show"><h3 id="orderconfirmation"> Order Confirmed!</h3>
+<h5> Customer Information: </h5>
+<p> Name: {{burgerdetails.fullname}} </p>
+<p> Email: {{burgerdetails.email}} </p>
+<p> Deliver to: {{x}} x / {{y}} y </p>
+<p> Payment method: {{burgerdetails.payment}} </p>
+<p> Gender: {{burgerdetails.gender}} </p>
+<h4>Order Summary:</h4>
+<div v-for="Burger in burgerdetails.chosen_burger"><li>{{Burger}}</li></div>
+</div>
+
+<hr> <!-- Detta är en linje -->
+
 <footer> &copy; BurgersOnline - Your kitchen online!
   <p>
     <img id="footImage" src="https://images.unsplash.com/photo-1428660386617-8d277e7deaf2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d85cfa1d6d003f6e82f46bc5a394a592&auto=format&fit=crop&w=600&q=60">

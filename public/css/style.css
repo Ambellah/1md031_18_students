@@ -53,11 +53,11 @@ body {
   font-weight: bold;
 }
 
-
 #allergies {
   color: #FF0000;
   font-style: italic;
 }
+
 
 #CustomerInfo {
   border: 15px double #000000;
@@ -73,34 +73,7 @@ body {
   font-size: 100%;
 }
 
-#GenderSurvey {
-  margin-top: 10px;
-  margin-left: 10px;
-  border-top: 5px dotted #FF69B4;
-  border-bottom: 5px dotted #FF69B4;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #F8B008;
-}
-
-#orders {
-  margin: 20px;
-  border-bottom: 5px dotted #FF69B4;
-  padding-bottom: 20px;
-}
-
-#myButtonID{
-  font-size: 100%;
-}
-
-#footImage {
-  width: 100%;
-  height: 20px;
-}
-
-
+/*KARTAN*/
 body {
 	margin: 0;
 	padding: 0;
@@ -144,4 +117,31 @@ body {
 	color:black;
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
+}
+/*Slutet för kartan!*/
+
+#GenderSurvey {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-top: 5px dotted #FF69B4;
+  border-bottom: 5px dotted #FF69B4;
+  margin-bottom: 20px;
+}
+
+
+
+button:hover {
+  cursor: pointer;
+  background-color: #F8B008;
+}
+
+#myButtonID{
+  font-size: 100%;
+}
+
+
+
+#footImage {
+  width: 100%;
+  height: 20px;
 }
