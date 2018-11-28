@@ -118,6 +118,7 @@ body {
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
 }
+
 /*Slutet för kartan!*/
 
 #GenderSurvey {
@@ -128,8 +129,6 @@ body {
   margin-bottom: 20px;
 }
 
-
-
 button:hover {
   cursor: pointer;
   background-color: #F8B008;
@@ -138,8 +137,6 @@ button:hover {
 #myButtonID{
   font-size: 100%;
 }
-
-
 
 #footImage {
   width: 100%;

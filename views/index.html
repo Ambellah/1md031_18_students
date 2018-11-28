@@ -34,8 +34,6 @@
           <label class="container"> Add to order <input v-model="burgerdetails.chosen_burger" :id="Burger.name" name="chosen_burger" type="checkbox" :value="Burger.name" >
             <span class="checkmark"></span>
           </label>
-
-          <!-- Iterate over all checkboxes, check if they are checked. Get getElementbyId.-->
         </li>
       </ul>
 
@@ -71,79 +69,66 @@
         <h4 id=CI_text> Delivery Information: </h4>
         <h6 id=CI_text> Please, indicate point of delivery </h6>
 
-        <!-- KARTAN dispatcher!!
-        <div id="orders">
-        <div id="orderList">
-        <div v-for="(order, key) in orders">
-        #{{ key }}: {{ order.orderItems.join(", ") }}
+
+        <!-- KARTAN-->
+
+        <div class="view-box">
+          <div id="dots" v-on:click="displayOrder">
+            <div
+            v-bind:style="{ left: x + 'px', top: y + 'px'}">
+            T
+          </div>
+
+        </div>
       </div>
+
+
+    </section>
+
+
+    <section id="GenderSurvey">
+      <h3>Gender Statistics Study</h3><p> Please select your gender by choosing one of the options listed below</p>
+      <p>
+        <input v-model="burgerdetails.gender" type="radio" id="Female" name="gender" checked="checked" value="Female">
+        <label for="Female">Female</label><br>
+      </p>
+      <p>
+        <input v-model="burgerdetails.gender" type="radio" id="Male" name="gender" value="Male">
+        <label for="Male">Male</label><br>
+      </p>
+      <p>
+        <input v-model="burgerdetails.gender" type="radio" id="Other" name="gender" value="Do not wish to participate">
+        <label for="Other">Do not wish to participate</label><br>
+      </p>
+    </section>
+
+
+    <div id="orders">
+      <button id="myButtonID" v-on:click="addOrder"  type="submit"><img src="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2539c60108dc7a87abf4eba1bcd021be&auto=format&fit=crop&w=750&q=80" width="300px"> <br /> Click here to place order!</button>
     </div>
-    <div id="dots">
-    <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-    {{ key }}
+
+    <hr> <!-- Detta är en linje -->
+
+    <div class="confirmation" v-if="show"><h3 id="orderconfirmation"> Order Confirmed!</h3>
+      <h5> Customer Information: </h5>
+      <p> Name: {{burgerdetails.fullname}} </p>
+      <p> Email: {{burgerdetails.email}} </p>
+      <p> Deliver to: {{x}} x / {{y}} y </p>
+      <p> Payment method: {{burgerdetails.payment}} </p>
+      <p> Gender: {{burgerdetails.gender}} </p>
+      <h4>Order Summary:</h4>
+      <div v-for="Burger in burgerdetails.chosen_burger"><li>{{Burger}}</li></div>
+    </div>
+
+    <hr> <!-- Detta är en linje -->
+
+    <footer> &copy; BurgersOnline - Your kitchen online!
+      <p>
+        <img id="footImage" src="https://images.unsplash.com/photo-1428660386617-8d277e7deaf2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d85cfa1d6d003f6e82f46bc5a394a592&auto=format&fit=crop&w=600&q=60">
+      </p>
+    </footer>
+
   </div>
-</div>
--->
-
-<!-- KARTAN-->
-
-<div class="view-box">
-  <div id="dots" v-on:click="displayOrder">
-    <div
-    v-bind:style="{ left: x + 'px', top: y + 'px'}">
-    T
-  </div>
-
-</div>
-</div>
-
-
-</section>
-
-
-<section id="GenderSurvey">
-  <h3>Gender Statistics Study</h3><p> Please select your gender by choosing one of the options listed below</p>
-  <p>
-    <input v-model="burgerdetails.gender" type="radio" id="Female" name="gender" checked="checked" value="Female">
-    <label for="Female">Female</label><br>
-  </p>
-  <p>
-    <input v-model="burgerdetails.gender" type="radio" id="Male" name="gender" value="Male">
-    <label for="Male">Male</label><br>
-  </p>
-  <p>
-    <input v-model="burgerdetails.gender" type="radio" id="Other" name="gender" value="Do not wish to participate">
-    <label for="Other">Do not wish to participate</label><br>
-  </p>
-</section>
-
-
-<div id="orders">
-  <button id="myButtonID" v-on:click="addOrder"  type="submit"><img src="https://images.unsplash.com/photo-1509315703195-529879416a7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2539c60108dc7a87abf4eba1bcd021be&auto=format&fit=crop&w=750&q=80" width="300px"> <br /> Click here to place order!</button>
-</div>
-
-<hr> <!-- Detta är en linje -->
-
-<div class="confirmation" v-if="show"><h3 id="orderconfirmation"> Order Confirmed!</h3>
-<h5> Customer Information: </h5>
-<p> Name: {{burgerdetails.fullname}} </p>
-<p> Email: {{burgerdetails.email}} </p>
-<p> Deliver to: {{x}} x / {{y}} y </p>
-<p> Payment method: {{burgerdetails.payment}} </p>
-<p> Gender: {{burgerdetails.gender}} </p>
-<h4>Order Summary:</h4>
-<div v-for="Burger in burgerdetails.chosen_burger"><li>{{Burger}}</li></div>
-</div>
-
-<hr> <!-- Detta är en linje -->
-
-<footer> &copy; BurgersOnline - Your kitchen online!
-  <p>
-    <img id="footImage" src="https://images.unsplash.com/photo-1428660386617-8d277e7deaf2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d85cfa1d6d003f6e82f46bc5a394a592&auto=format&fit=crop&w=600&q=60">
-  </p>
-</footer>
-
-</div>
 </main>
 </body>
 </html>

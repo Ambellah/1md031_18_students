@@ -12,6 +12,7 @@ var vm = new Vue({
       chosen_burger:[]
     },
 
+    orderId:0,
     orders:{},
     show:false,
     x:0,
@@ -25,10 +26,9 @@ var vm = new Vue({
     },
 
     getNext: function () {
-      var lastOrder = Object.keys(this.orders).reduce( function (last, next) {
-        return Math.max(last, next);
-      }, 0);
-      return lastOrder + 1;
+      this.orderId = this.orderId+1;
+      return this.orderId;
+    
     },
     addOrder: function (event) {
       this.markDone();
